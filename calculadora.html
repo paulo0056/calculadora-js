@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Calculadora</title>
+</head>
+
+<body>
+    <div class="container BG mw-100">
+        
+        <div class="calculadora">
+            <h1 class="text-center">Calculadora</h1>
+            <p id="resultado"></p>
+            <table>
+                <tr>
+                    <td><button type="button" class="btn  bt" onclick="clean()">C</button></td>
+                    <td><button type="button" class="btn  bt" onclick="back()">></button>
+                    </td>
+                    <td><button type="button" class="btn  bt" onclick="insert('/')">/</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('*')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="btn  bt" onclick="insert('7')">7</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('8')">8</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('9')">9</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="btn  bt" onclick="insert('4')">4</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('5')">5</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('6')">6</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="btn  bt" onclick="insert('1')">1</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('2')">2</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button type="button" class="btn  bt bt1" onclick="calcular()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="button" class="btn  bt bt2">0</button></td>
+                    <td><button type="button" class="btn  bt" onclick="insert('.')">.</button></td>
+
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    <script>
+        function insert(num) {
+            var numero = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero + num;
+        }
+
+        function clean() {
+            document.getElementById('resultado').innerHTML = "";
+        }
+
+        function back() {
+            var resultado = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1);
+        }
+        function calcular() {
+            var resultado = document.getElementById('resultado').innerHTML;
+            try {
+                if (resultado) {
+
+                    document.getElementById('resultado').innerHTML = eval(resultado);
+                    console.log(resultado)
+                } else {
+                    alert("Nada para calcular!")
+                }
+            }
+            catch (err) {
+                alert('Operação Invalida!')
+            }
+            
+        }
+    </script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
